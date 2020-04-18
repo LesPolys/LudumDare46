@@ -40,7 +40,7 @@ public class Hands : MonoBehaviour
                     hit.rigidbody.useGravity = false;
                     hit.rigidbody.isKinematic = true;
                     hit.transform.position = holdPoint.position;
-                    hit.collider.enabled = false;
+                    //hit.collider.enabled = false;
 
                     // hit.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     //Debug.Log("GRAB");
@@ -58,7 +58,6 @@ public class Hands : MonoBehaviour
         }
 
 
-
         if (Input.GetMouseButtonUp(0))
         {
            // Debug.Log("Release");
@@ -66,13 +65,18 @@ public class Hands : MonoBehaviour
             {
                     isGrabbing = true;
                     grabbedObject.GetComponent<Rigidbody>().useGravity = true;
-                    grabbedObject.GetComponent<Collider>().enabled = true;
+                    //grabbedObject.GetComponent<Collider>().enabled = true;
                     grabbedObject.transform.SetParent(null);
                     grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
                     //grabbedObject.transform.localScale = new Vector3(1, 1, 1);
                     grabbedObject = null;
                    // Debug.Log("Release");
             }
+        }
+
+        if (grabbedObject)
+        {
+            HandleHighlighting(grabbedObject);
         }
 
         Debug.DrawRay(cameraTransform.position + cameraTransform.forward * offsetDistance, cameraTransform.forward * maxGrabDistance, Color.green);
