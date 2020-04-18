@@ -88,11 +88,13 @@ public class Hands : MonoBehaviour
                 {
                     isGrabbing = false;
                     Transform connectionPoint = hit.transform.gameObject.GetComponent<Connectable>().connectionPoint.transform;
+                    grabbedObject.layer = 10;
+
                     grabbedObject.transform.SetParent(connectionPoint);
                     grabbedObject.GetComponent<Collider>().enabled = true;
 
                     grabbedObject.transform.position = connectionPoint.position;
-                    grabbedObject.transform.rotation = connectionPoint.rotation;
+                    //grabbedObject.transform.rotation = connectionPoint.rotation;
 
                     hit.transform.gameObject.GetComponent<Connectable>().isConnected = true;
                     grabbedObject.GetComponent<Connectable>().isConnected = true;
