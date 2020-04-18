@@ -134,7 +134,12 @@ public class Hands : MonoBehaviour
             UnHighlight();
             currentLookAtObject = newHighlightObject;
         }
-        currentLookAtObject.GetComponent<Highlighting>().Highlight();
+
+        if (currentLookAtObject != null && currentLookAtObject.GetComponent<Highlighting>())
+        {
+            currentLookAtObject.GetComponent<Highlighting>().Highlight();
+
+        }
 
     }
 

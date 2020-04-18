@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3305090984329086855}
   - component: {fileID: 3305090984329086852}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ContactPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4625501750699366825}
   - component: {fileID: 5454134997497073508}
   - component: {fileID: 3679713865302360225}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bot_2_TopC
   m_TagString: Pickup
   m_Icon: {fileID: 0}
