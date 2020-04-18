@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 174477727}
   - component: {fileID: 174477726}
   - component: {fileID: 174477730}
+  - component: {fileID: 174477731}
   m_Layer: 0
   m_Name: Pickup
   m_TagString: Pickup
@@ -231,6 +232,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &174477731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174477725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f747fad293738643a436c4ad154ec8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalShader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  highLightShader: {fileID: 4800000, guid: 3a722d6d2f8305b429fbfef0cfa93928, type: 3}
 --- !u!1 &282840810
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +327,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1038459888}
   m_Father: {fileID: 654487484}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -590,6 +606,7 @@ GameObject:
   - component: {fileID: 538263599}
   - component: {fileID: 538263598}
   - component: {fileID: 538263603}
+  - component: {fileID: 538263604}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Pickup
@@ -699,6 +716,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f747fad293738643a436c4ad154ec8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalShader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  highLightShader: {fileID: 4800000, guid: 3a722d6d2f8305b429fbfef0cfa93928, type: 3}
+--- !u!114 &538263604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538263597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f747fad293738643a436c4ad154ec8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalShader: {fileID: 0}
+  highLightShader: {fileID: 0}
 --- !u!1 &596309714
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,7 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 282840814}
-  holdPoint: {fileID: 0}
+  holdPoint: {fileID: 1038459888}
   offsetDistance: 1
   maxGrabDistance: 2
 --- !u!1 &682415846
@@ -1024,6 +1057,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &1038459887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1038459888}
+  m_Layer: 0
+  m_Name: HoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1038459888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038459887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 282840814}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1277440273
 GameObject:
   m_ObjectHideFlags: 0

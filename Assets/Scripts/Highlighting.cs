@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Highlighting : MonoBehaviour
 {
+    [SerializeField]
+    Shader normalShader;
 
+    [SerializeField]
+    Shader highLightShader;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Highlight()
     {
-        
+        gameObject.GetComponent<MeshRenderer>().material.shader = highLightShader;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UnHighlight()
     {
-        
+        gameObject.GetComponent<MeshRenderer>().material.shader = normalShader;
     }
+
+
 }
