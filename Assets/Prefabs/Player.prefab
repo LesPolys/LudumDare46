@@ -565,6 +565,8 @@ MonoBehaviour:
   holdPoint: {fileID: 9158653330392090540}
   offsetDistance: 1
   maxGrabDistance: 2
+  partsDestroyer: {fileID: 0}
+  maxDestructionDistance: 0
 --- !u!1 &9158653330553524878
 GameObject:
   m_ObjectHideFlags: 0
