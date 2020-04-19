@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PartDestroyer : MonoBehaviour
 {
+    [SerializeField]
+    Transform holdPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,10 @@ public class PartDestroyer : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void DestroyParts(GameObject toDestroy)
+    {
+        Destroy(toDestroy.transform.root.gameObject);
     }
 }

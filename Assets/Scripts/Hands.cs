@@ -16,6 +16,12 @@ public class Hands : MonoBehaviour
     [SerializeField]
     float maxGrabDistance;
 
+    [SerializeField]
+    PartDestroyer partsDestroyer;
+
+    [SerializeField]
+    float maxDestructionDistance;
+
     private GameObject grabbedObject;
 
     private bool isGrabbing = false;
@@ -31,7 +37,7 @@ public class Hands : MonoBehaviour
         {
             if (hit.collider.tag == "Pickup")
             {
-                Debug.Log("Pickup");
+                //Debug.Log("Pickup");
 
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -99,6 +105,11 @@ public class Hands : MonoBehaviour
                     hit.transform.gameObject.GetComponent<Connectable>().isConnected = true;
                     grabbedObject.GetComponent<Connectable>().isConnected = true;
 
+                    if (partsDestroyer != null && Vector3.Distance(transform.position, partsDestroyer.transform.position) <= maxDestructionDistance)
+                    {
+                        partsDestroyer.DestroyParts(grabbedObject);
+                    }
+
                     grabbedObject = null;
                 }
                 Debug.DrawLine(cameraTransform.position + cameraTransform.forward * offsetDistance, hit.point, Color.red);
@@ -113,9 +124,17 @@ public class Hands : MonoBehaviour
                     grabbedObject.GetComponent<Collider>().enabled = true;
                     grabbedObject.transform.SetParent(null);
                     grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
-                    //grabbedObject.transform.localScale = new Vector3(1, 1, 1);
-                    grabbedObject = null;
-                   // Debug.Log("Release");
+                //grabbedObject.transform.localScale = new Vector3(1, 1, 1);
+                // Debug.Log("Release");
+
+                Debug.Log(Vector3.Distance(transform.position, partsDestroyer.transform.position));
+
+                if (partsDestroyer != null && Vector3.Distance(transform.position, partsDestroyer.transform.position) <= maxDestructionDistance)
+                {
+                    partsDestroyer.DestroyParts(grabbedObject);
+                }
+                grabbedObject = null;
+
             }
         }
 
@@ -145,7 +164,7 @@ public class Hands : MonoBehaviour
 
     void UnHighlight()
     {
-        if (currentLookAtObject)
+        if (currentLookAtObject && currentLookAtObject.GetComponent<Highlighting>())
         {
             currentLookAtObject.GetComponent<Highlighting>().UnHighlight();
         }
