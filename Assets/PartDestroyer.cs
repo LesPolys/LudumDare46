@@ -7,6 +7,9 @@ public class PartDestroyer : MonoBehaviour
     [SerializeField]
     Transform holdPosition;
 
+    [SerializeField]
+    BotDisposalGenerator disposal;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,10 @@ public class PartDestroyer : MonoBehaviour
 
     public void DestroyParts(GameObject toDestroy)
     {
+    
+        disposal.UpdateCurrentGoal();
+        
+
         Destroy(toDestroy.transform.root.gameObject);
     }
 }

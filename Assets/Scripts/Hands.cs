@@ -100,7 +100,7 @@ public class Hands : MonoBehaviour
                     grabbedObject.GetComponent<Collider>().enabled = true;
 
                     grabbedObject.transform.position = connectionPoint.position;
-                    //grabbedObject.transform.rotation = connectionPoint.rotation;
+                    grabbedObject.transform.rotation = connectionPoint.rotation;
 
                     hit.transform.gameObject.GetComponent<Connectable>().isConnected = true;
                     grabbedObject.GetComponent<Connectable>().isConnected = true;
@@ -127,7 +127,7 @@ public class Hands : MonoBehaviour
                 //grabbedObject.transform.localScale = new Vector3(1, 1, 1);
                 // Debug.Log("Release");
 
-                Debug.Log(Vector3.Distance(transform.position, partsDestroyer.transform.position));
+               // Debug.Log(Vector3.Distance(transform.position, partsDestroyer.transform.position));
 
                 if (partsDestroyer != null && Vector3.Distance(transform.position, partsDestroyer.transform.position) <= maxDestructionDistance)
                 {

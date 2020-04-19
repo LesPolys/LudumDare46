@@ -11,9 +11,6 @@ GameObject:
   - component: {fileID: 150131312048206412}
   - component: {fileID: 150131312048206413}
   - component: {fileID: 150131312048206418}
-  - component: {fileID: 150131312048206419}
-  - component: {fileID: 150131312048206416}
-  - component: {fileID: 150131312048206417}
   m_Layer: 0
   m_Name: HoloHeadBlue2
   m_TagString: Pickup
@@ -85,47 +82,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!54 &150131312048206419
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150131312048206422}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &150131312048206416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150131312048206422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f747fad293738643a436c4ad154ec8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalShader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  highLightShader: {fileID: 4800000, guid: 3a722d6d2f8305b429fbfef0cfa93928, type: 3}
---- !u!64 &150131312048206417
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150131312048206422}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: f658b98bfb2ff8841b00470c7694e45e, type: 3}
