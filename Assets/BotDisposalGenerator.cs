@@ -11,7 +11,7 @@ public class BotDisposalGenerator : MonoBehaviour
     HoloPillarController leftPillar;
 
     [SerializeField]
-    Dictionary<GameObject,GameObject> holoDictionary;
+    List<GameObject> holoGrams;
 
     [SerializeField]
     List<GameObject> holoOptions;
@@ -33,6 +33,8 @@ public class BotDisposalGenerator : MonoBehaviour
 
     [SerializeField]
     int waveSize;
+
+    Dictionary<GameObject, GameObject> holoDictionary;
 
     float currentWaveTime;
 
@@ -57,6 +59,14 @@ public class BotDisposalGenerator : MonoBehaviour
     {
         goalList = new List<GameObjectPair>();
         toSpawn = new List<GameObject>();
+
+        holoDictionary = new Dictionary<GameObject, GameObject>();
+
+        for (int i = 0; i < holoGrams.Count; i++)
+        {
+            holoDictionary.Add(holoOptions[i], holoGrams[i]);
+        }
+
         PreLoadParts();
     }
 
@@ -88,13 +98,14 @@ public class BotDisposalGenerator : MonoBehaviour
         {
             PopulateNextWave();
         }
+
+        UpdateCurrentGoal();
     }
 
     public void UpdateCurrentGoal(){
-        Debug.Log("YO");
         goalList.RemoveAt(0);
         currentGoal = goalList[0];
-        spawnHoloPair(currentGoal.left, currentGoal.right);
+        spawnHoloPair(goalList[0].left, goalList[0].right);
     }
 
     private void PopulateNextWave()
@@ -105,8 +116,8 @@ public class BotDisposalGenerator : MonoBehaviour
         newPair.right = holoOptions[UnityEngine.Random.Range(0, holoOptions.Count)];
 
         goalList.Add(newPair);
-        toSpawn.Add(newPair.left);
-        toSpawn.Add(newPair.right);
+        AddElement(newPair.left);
+        AddElement(newPair.right);
         //Debug.Log(toSpawn.Count);
 
     }
@@ -127,10 +138,33 @@ public class BotDisposalGenerator : MonoBehaviour
         GameObject newL = new GameObject();
         GameObject newR = new GameObject();
 
-        holoDictionary.TryGetValue(pillarL, out newL);
-        holoDictionary.TryGetValue(pillarR, out newR);
+        bool isLeft = holoDictionary.TryGetValue(pillarL, out newL);
+        bool isRight = holoDictionary.TryGetValue(pillarR, out newR);
 
-        leftPillar.SpawnNewHolo(newL);
-        rightPillar.SpawnNewHolo(newR);
+        if (isLeft && isRight)
+        {
+            leftPillar.SpawnNewHolo(newL);
+            rightPillar.SpawnNewHolo(newR);
+        }
+    }
+
+    public void ReAddElement(GameObject earlyExit)
+    {
+        AddElement(earlyExit);
+    }
+
+    private void AddElement(GameObject obj)
+    {
+        if (holoOptions.Contains(obj))
+        {
+            foreach (GameObject objType in holoOptions)
+            {
+                if (obj == objType)
+                {
+                    toSpawn.Add(objType);
+                    return;
+                }
+            }
+        }
     }
 }

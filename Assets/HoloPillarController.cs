@@ -34,6 +34,7 @@ public class HoloPillarController : MonoBehaviour
         GameObject tempHolo = GameObject.Instantiate(newHolo, this.transform.position, Quaternion.identity);
         tempHolo.transform.rotation = holoRotatingSpawn.transform.rotation;
         tempHolo.transform.SetParent(holoRotatingSpawn.transform);
+        tempHolo.transform.localPosition = Vector3.zero;
         currentHolo = tempHolo;
     }
 }

@@ -105,6 +105,10 @@ public class Hands : MonoBehaviour
                     hit.transform.gameObject.GetComponent<Connectable>().isConnected = true;
                     grabbedObject.GetComponent<Connectable>().isConnected = true;
 
+                    hit.transform.GetComponent<Connectable>().containtedTypes.Add(grabbedObject);
+                    grabbedObject.GetComponent<Connectable>().containtedTypes.Add(hit.transform.gameObject);
+
+
                     if (partsDestroyer != null && Vector3.Distance(transform.position, partsDestroyer.transform.position) <= maxDestructionDistance)
                     {
                         partsDestroyer.DestroyParts(grabbedObject);

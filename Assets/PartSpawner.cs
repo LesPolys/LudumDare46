@@ -25,6 +25,7 @@ public class PartSpawner : MonoBehaviour
         {
             GameObject part = GameObject.Instantiate(parts[Random.Range(0,parts.Count)], spawnPosition.position, Quaternion.identity, null);
             part.transform.localScale = Vector3.one * sizes[Random.Range(0,sizes.Count)];
+            part.GetComponent<Connectable>().containtedTypes.Add(part);
         }
     }
 
@@ -32,11 +33,13 @@ public class PartSpawner : MonoBehaviour
     {
         GameObject part = GameObject.Instantiate(newPart, spawnPosition.position, Quaternion.identity, null);
         part.transform.localScale = Vector3.one * sizes[Random.Range(0, sizes.Count)];
+        part.GetComponent<Connectable>().containtedTypes.Add(part);
     }
 
     public void SpawnRandomPart()
     {
         GameObject part = GameObject.Instantiate(parts[Random.Range(0, parts.Count)], spawnPosition.position, Quaternion.identity, null);
         part.transform.localScale = Vector3.one * sizes[Random.Range(0, sizes.Count)];
+        part.GetComponent<Connectable>().containtedTypes.Add(part);
     }
 }
