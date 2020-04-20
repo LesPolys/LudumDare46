@@ -8,6 +8,12 @@ public class PartDestroyer : MonoBehaviour
     Transform holdPosition;
 
     [SerializeField]
+    AudioSource success;
+
+    [SerializeField]
+    AudioSource fail;
+
+    [SerializeField]
     BotDisposalGenerator disposal;
 
     // Start is called before the first frame update
@@ -33,13 +39,14 @@ public class PartDestroyer : MonoBehaviour
 
             if (pair.left.gameObject.name + "(Clone)" == set[0].name  && pair.right.gameObject.name + "(Clone)" == set[1].name  || pair.left.gameObject.name + "(Clone)" == set[1].name  && pair.right.gameObject.name + "(Clone)" == set[0].name )
             {
-              //  Debug.Log("Good");
-
+                //  Debug.Log("Good");
+                success.Play();
                 disposal.UpdateCurrentGoal();
             }
             else
             {
                 //Debug.Log("Bad");
+                fail.Play();
 
                 GameObject a = set[0].gameObject;
                 GameObject b = set[1].gameObject;
@@ -50,8 +57,9 @@ public class PartDestroyer : MonoBehaviour
 
         }
         else
-        {
-            GameObject a = toDestroy;
+        { 
+            fail.Play();
+             GameObject a = toDestroy;
             disposal.ReAddElement(a);
         }
 

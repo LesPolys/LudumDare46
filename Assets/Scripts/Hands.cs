@@ -22,6 +22,16 @@ public class Hands : MonoBehaviour
     [SerializeField]
     float maxDestructionDistance;
 
+    [SerializeField]
+    AudioSource pickup;
+
+    [SerializeField]
+    AudioSource drop;
+
+    [SerializeField]
+    AudioSource weld;
+
+
     private GameObject grabbedObject;
 
     private bool isGrabbing = false;
@@ -41,7 +51,6 @@ public class Hands : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0))
                 {
-
                     if (!hit.transform.gameObject.GetComponent<Connectable>().isConnected)
                     {
                         isGrabbing = true;
@@ -51,6 +60,8 @@ public class Hands : MonoBehaviour
                         hit.rigidbody.isKinematic = true;
                         hit.transform.position = holdPoint.position;
                         hit.collider.enabled = false;
+                        pickup.Play();
+
                     }
                     else
                     {
@@ -61,9 +72,11 @@ public class Hands : MonoBehaviour
                         grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
                         grabbedObject.transform.position = holdPoint.position;
                         grabbedObject.GetComponent<Collider>().enabled = false;
+                        pickup.Play();
+
                     }
 
-       
+
 
                     // hit.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     //Debug.Log("GRAB");
@@ -114,6 +127,8 @@ public class Hands : MonoBehaviour
                         partsDestroyer.DestroyParts(grabbedObject);
                     }
 
+                    weld.Play();
+
                     grabbedObject = null;
                 }
                 Debug.DrawLine(cameraTransform.position + cameraTransform.forward * offsetDistance, hit.point, Color.red);
@@ -139,7 +154,12 @@ public class Hands : MonoBehaviour
                 }
                 grabbedObject = null;
 
+                drop.Play();
+
+
             }
+
+
         }
 
         if (grabbedObject)
